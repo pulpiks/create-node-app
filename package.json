@@ -1,0 +1,24 @@
+{
+  "name": "base",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "cli-app": "./index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.com:blue-harvest/the-harvest/blueprints/bluedev/nodejs/node-base.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "commander": "^7.0.0",
+    "inquirer": "^7.3.3"
+  }
+}
