@@ -9,6 +9,8 @@ $ npm init esm --yes
 
 update package with env variables ans install deps
 
+run index.js containig app logic
+
 
 Optional:
 
