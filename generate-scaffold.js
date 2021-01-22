@@ -1,8 +1,8 @@
 'use strict';
-
+console.log(process.argv)
 const app = require('commander');
 const inquirer = require('inquirer');
-const setupQuestions = require('./settings/setupQuestions.json');
+const setupQuestions = require('./settings/setupQuestions.js');
 
 const receiver = (options) => {
   

@@ -1,12 +1,15 @@
+const { confirmAnswerValidator } =  require('./validations')
 
-[{
+module.exports = [{
     "type": "input",
     "name": "teamName",
-    "message": "Team name"
+    "message": "Team name",
+    validate: confirmAnswerValidator({required: true})
 }, {
     "type": "input",
     "name": "projectName",
-    "message": "Project name"
+    "message": "Project name",
+    validate: confirmAnswerValidator({required: true})
 }, {
     "type": "input",
     "name": "author",
@@ -22,6 +25,7 @@
 }, {
     "type": "input",
     "name": "language",
+    choices: ['Javascript', 'Typescript'],
     "message": "Choose language: TS/JS"
 }, {
     "type": "input",
