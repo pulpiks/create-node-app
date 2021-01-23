@@ -12,8 +12,8 @@ const confirmAnswerValidator = (options = {
                 return false;
             }
         } else {
-            console.log(typeof input)
             if (typeof input === 'undefined' || isBlank(input) ) {
+                console.log('this field is required!')
                 return false
             }
         }

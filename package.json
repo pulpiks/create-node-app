@@ -1,13 +1,14 @@
 {
   "name": "base",
   "version": "1.0.0",
-  "description": "",
+  "keywords": ["bedrock-react"],
+  "description": "Create React apps with no build configuration.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bin": {
-    "cli-app": "./index.js"
+    "create-node-base": "./index.js"
   },
   "repository": {
     "type": "git",
@@ -15,6 +16,12 @@
   },
   "author": "",
   "license": "ISC",
+  "engines": {
+    "node": ">=10"
+  },
+  "bugs": {
+    "url": "https://[our-git-repo]/issues"
+  },
   "dependencies": {
   },
   "devDependencies": {

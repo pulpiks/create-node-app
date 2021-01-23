@@ -1,5 +1,4 @@
 'use strict';
-console.log(process.argv)
 const app = require('commander');
 const inquirer = require('inquirer');
 const setupQuestions = require('./settings/setupQuestions.js');
@@ -10,6 +9,7 @@ const receiver = (options) => {
     .prompt(setupQuestions)
     .then(answers => {
       console.log(answers)
+      
     })
     .then(result => {
       console.log(result);

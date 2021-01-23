@@ -13,11 +13,7 @@ module.exports = [{
 }, {
     "type": "input",
     "name": "author",
-    "message": "Author"
-}, {
-    "type": "input",
-    "name": "projectType",
-    "message": "Project type"
+    "message": "Author",
 }, {
     "type": "input",
     "name": "tests",
@@ -26,9 +22,12 @@ module.exports = [{
     "type": "input",
     "name": "language",
     choices: ['Javascript', 'Typescript'],
-    "message": "Choose language: TS/JS"
+    "message": "Choose language: TS/JS",
+    validate: confirmAnswerValidator({required: true})
 }, {
     "type": "input",
-    "name": "ESLint",
-    "message": "Do you want to use linter"
+    "name": "linter",
+    "message": "Specify linter on the project:",
+    choices: ['ESlint', 'Prettier'],
+    default: () => {return 'ESlint'},
 }]

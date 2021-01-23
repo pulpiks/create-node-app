@@ -1,6 +1,6 @@
 MUST:
 
-run generate-scaffold.js
+run generate-scaffold.js // generate structure, package.json with deps
 
 ---- https://docs.npmjs.com/cli/v6/commands/npm-init
 mkdir my-esm-lib && cd my-esm-lib
