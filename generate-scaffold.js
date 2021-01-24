@@ -21,9 +21,15 @@ const receiver = (options) => {
     })
 }
 
-app
+
+
+const init = () => {
+  app
   .version('1.0.0')
   .description('Please set up your project')
   .action(receiver);
 
-app.parse(process.argv);
+  app.parse(process.argv);
+}
+
+module.exports = {init};
