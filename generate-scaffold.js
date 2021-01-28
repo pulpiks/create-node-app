@@ -151,19 +151,17 @@ function init() {
 }
 
 
-function createApp(name, projectDir, verbose, version, template, useNpm, usePnp) {
-  console.log(arguments)
+function createApp(name, projectDir, verbose, version = '0.0.1', template, useNpm, usePnp) {
   const projectPath = `../${projectDir}`;
+  const packageJsonPath = projectPath + '/' + 'package.json';
   const res = execSync(`git clone https://github.com/http-party/http-server.git ${projectPath}`)
-    // read file and make object
-    console.log(path.resolve())
-    console.log(__dirname)
-    console.log(process.cwd)
-  let packageJson = JSON.parse(fs.readFileSync(path.resolve(__dirname, projectPath, 'package.json')));
-  // edit or add property
-  content.expiry_date = 999999999999;
-  //write file
-  fs.writeFileSync('file.json', JSON.stringify(content));
+  let packageJson = JSON.parse(fs.readFileSync(path.resolve(__dirname, packageJsonPath)));
+  const content = {
+    ...packageJson,
+    name,
+    version
+  }
+  fs.writeFileSync(packageJsonPath, JSON.stringify(content));
 }
 
 module.exports = {
