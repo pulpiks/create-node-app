@@ -1,3 +1,14 @@
+You can install the scaffold typing the command:
+create-node-base
+
+or ./index.js (before chmod +x ./index.js)
+
+
+
+
+
+
+
 MUST:
 
 run generate-scaffold.js // generate structure, package.json with deps
