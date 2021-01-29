@@ -1,30 +1,17 @@
-You can install the scaffold typing the command:
-create-node-base
+Scaffold for Node-base project allows you to install the scaffolding project with requied file structure, dependincies, etc.
 
-or ./index.js (before chmod +x ./index.js)
+First you need to have teh command create-node-base in you ./node_modules/.bin to have the following command in you local workspace.
 
+Then, to generate the scaffold you can simply execute the following command:
 
+`create-node-base  <%=FOLDER_NAME%> `
 
-
-
-
-
-MUST:
-
-run generate-scaffold.js // generate structure, package.json with deps
-
----- https://docs.npmjs.com/cli/v6/commands/npm-init
-mkdir my-esm-lib && cd my-esm-lib
-$ npm init esm --yes
------
-
-update package with env variables ans install deps
-
-run index.js containig app logic
+For example: create-node-base my-server will generate the project in my-server folder
 
 
-Optional:
+TODO:
 
-- editorconfig
-- add logic for different configurations for typescript/javascript
+- create 2 node-projects for typescript/javscript containing basic logic for running empty node server
+- beatify questions/answers in setupQuestions.js 
+- add more functionality fo scaffold (up to us)
 
