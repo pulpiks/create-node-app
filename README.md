@@ -1,16 +1,12 @@
 Scaffold for Node-base project allows you to install the scaffolding project with requied file structure, dependincies, etc.
 
-To generate the scaffold you can simply execute any of the following commands:
+First you need to have teh command create-node-base in you ./node_modules/.bin to have the following command in you local workspace.
 
-create-node-base  <%=FOLDER_NAME%> 
+Then, to generate the scaffold you can simply execute the following command:
+
+`create-node-base  <%=FOLDER_NAME%> `
 
 For example: create-node-base my-server will generate the project in my-server folder
-
-
-You can install the scaffold typing the command:
-create-node-base
-
-or ./index.js (before chmod +x ./index.js)
 
 
 TODO:
