@@ -33,9 +33,7 @@ const fetchResponses = (options) => {
 }
 
 
-
 function init() {
-  console.log('123123')
   const program = new commander.Command(packageJson.name) 
     .version(packageJson.version)
     .description('Please set up your project')
@@ -71,7 +69,7 @@ function init() {
           // blocked by a firewall, and packages are provided exclusively via a private
           // registry.
           createApp(
-            projectName,
+            answers,
             projectDir,
             program.verbose,
             program.scriptsVersion,
@@ -151,17 +149,26 @@ function init() {
 }
 
 
-function createApp(name, projectDir, verbose, version = '0.0.1', template, useNpm, usePnp) {
+function createApp(userSettings, projectDir, verbose, version = '0.0.1', template, useNpm, usePnp) {
   const projectPath = `../${projectDir}`;
   const packageJsonPath = projectPath + '/' + 'package.json';
+  if (fs.existsSync(projectPath)) {
+    console.log('remove directory')
+    fs.removeSync(projectPath);
+  }
   const res = execSync(`git clone https://github.com/http-party/http-server.git ${projectPath}`)
   let packageJson = JSON.parse(fs.readFileSync(path.resolve(__dirname, packageJsonPath)));
   const content = {
     ...packageJson,
-    name,
+    name: userSettings.projectName,
+    author: userSettings.teamName || userSettings.author,
+    contributors: [{
+      "name": userSettings.author,
+    }],
+    description: "Node base project",
     version
   }
-  fs.writeFileSync(packageJsonPath, JSON.stringify(content));
+  fs.writeFileSync(packageJsonPath, JSON.stringify(content, null, 2));
 }
 
 module.exports = {
