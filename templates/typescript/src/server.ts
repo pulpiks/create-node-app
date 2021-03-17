@@ -1,6 +1,6 @@
-const http = require('http');
+import http from 'http'
 
-const requestListener = function (req, res) {
+const requestListener: http.RequestListener = (_req, res) => {
   res.writeHead(200);
   res.end('Hello, World!');
 }

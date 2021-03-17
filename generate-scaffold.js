@@ -20,6 +20,8 @@ const validateProjectName = require('validate-npm-package-name');
 const inquirer = require('inquirer');
 const setupQuestions = require('./settings/setupQuestions.js');
 const packageJson = require('./package.json');
+const { exit } = require('process');
+const { copyRecursiveSync } = require('./utils');
 
 let userPrefs;
 
@@ -149,26 +151,71 @@ function init() {
 }
 
 
-function createApp(userSettings, projectDir, verbose, version = '0.0.1', template, useNpm, usePnp) {
-  const projectPath = `../${projectDir}`;
-  const packageJsonPath = projectPath + '/' + 'package.json';
+
+
+
+function createApp(userSettings = {
+  teamName: 'blueharvest',
+  projectName: 'abnamro',
+  author: 'ksenia',
+  language: 'js',
+  linter: 'eslint'
+}, projectDir = '../my-node-servel111', verbose, version = '0.0.1', templateName, useNpm, usePnp) {
+  const curDir = __dirname // scaafold
+  const projectPath = path.resolve(curDir, projectDir) // ./my-node-servel111
   if (fs.existsSync(projectPath)) {
-    console.log('remove directory')
     fs.removeSync(projectPath);
   }
-  const res = execSync(`git clone https://github.com/http-party/http-server.git ${projectPath}`)
-  let packageJson = JSON.parse(fs.readFileSync(path.resolve(__dirname, packageJsonPath)));
-  const content = {
-    ...packageJson,
-    name: userSettings.projectName,
-    author: userSettings.teamName || userSettings.author,
-    contributors: [{
-      "name": userSettings.author,
-    }],
-    description: "Node base project",
-    version
-  }
-  fs.writeFileSync(packageJsonPath, JSON.stringify(content, null, 2));
+
+  fs.mkdirSync(projectPath)
+  
+  const template = templateName || 'base'
+
+  if (template) {
+    const templatePath = path.join(curDir, '/templates/', template);
+    if (fs.existsSync(templatePath)) {
+      const srcDir = templatePath + '/src'
+      const destDir =  projectPath + '/src' 
+      copyRecursiveSync(srcDir, destDir)
+       //passsing directoryPath and callback function
+      const files = fs.readdirSync(templatePath)
+      //listing all files using forEach
+      const blackList = ['src', 'template.json']
+      files.forEach((file) => {
+        if (blackList.indexOf(file) < 0 ) {
+          if (fs.lstatSync(templatePath + '/' + file).isDirectory()) {
+            const path = projectPath + '/' +  file
+            copyRecursiveSync(templatePath + '/' + file, path)
+          } else {
+            copyRecursiveSync(templatePath + '/' + file, projectPath + '/' + file)
+            // doesnt worj
+          }
+        }
+      });
+
+      const templateJsonPath = templatePath + '/' + 'template.json';
+      const packageJsonPath = projectPath + '/' + 'package.json'
+      let packageJson = JSON.parse(fs.readFileSync(require.resolve(templateJsonPath)));
+
+      const content = {
+        ...packageJson,
+        name: userSettings.projectName,
+        author: userSettings.teamName || userSettings.author,
+        contributors: [{
+          "name": userSettings.author,
+        }],
+        description: `bedrock node-base-${templateName}`,
+        version
+      }
+      fs.writeFileSync(packageJsonPath, JSON.stringify(content, null, 2));
+
+    } else {
+      throw new Error('template doesnt exist')
+    }
+  }  else {
+    throw new Error('template not found')
+  }   
+  
 }
 
 module.exports = {
