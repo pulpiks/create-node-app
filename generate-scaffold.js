@@ -154,13 +154,14 @@ function init() {
 
 
 
-function createApp(userSettings = {
-  teamName: 'blueharvest',
-  projectName: 'abnamro',
-  author: 'ksenia',
-  language: 'js',
-  linter: 'eslint'
-}, projectDir = '../my-node-servel111', verbose, version = '0.0.1', templateName, useNpm, usePnp) {
+function createApp(
+  userSettings,
+  projectDir,
+  verbose,
+  version = '0.0.1',
+  templateName,
+) {
+  console.log(arguments)
   const curDir = __dirname // scaafold
   const projectPath = path.resolve(curDir, projectDir) // ./my-node-servel111
   if (fs.existsSync(projectPath)) {
