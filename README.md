@@ -21,7 +21,7 @@ Create a project, and you’re good to go.
 
   
 
-1. Clone the repo https://github.com/pulpiks/scaffold-node.git
+1. Clone the repo https://github.com/pulpiks/create-node-app.git
 
   
 
