@@ -1,5 +1,5 @@
 {
-  "name": "node-base",
+  "name": "create-node-app",
   "version": "1.0.0",
   "keywords": [
     "bedrock-react"
@@ -10,7 +10,7 @@
     "test": "cross-env FORCE_COLOR=true jest"
   },
   "bin": {
-    "create-node-base": "./index.js"
+    "create-node-app": "./index.js"
   },
   "repository": {
     "type": "git",
