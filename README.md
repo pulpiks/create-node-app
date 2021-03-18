@@ -25,14 +25,15 @@ Create a project, and you’re good to go.
 
 No configuration or complicated folder structures, only the files you need to build your app. Once the installation is done, you can open your project folder:
 
-➜  my-node-servel113 ls -lf
+---
+your-node-server ls -lf  
 ├── jest.config.js  
 ├── .gitignore  
 ├── package.json  
 ├── .eslintrc.js  
 ├── src/  
     ├── server.js  
-
+---
 
 Scripts#
 Inside the newly created project, you can run some built-in commands.
