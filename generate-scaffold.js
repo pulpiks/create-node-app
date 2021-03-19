@@ -161,6 +161,7 @@ function createApp(
   version = '0.0.1',
   templateName,
 ) {
+  const { language } = userSettings
   console.log(arguments)
   const curDir = __dirname // scaafold
   const projectPath = path.resolve(curDir, projectDir) // ./my-node-servel111
@@ -170,7 +171,7 @@ function createApp(
 
   fs.mkdirSync(projectPath)
   
-  const template = templateName || 'base'
+  const template = language || 'base'
 
   if (template) {
     const templatePath = path.join(curDir, '/templates/', template);
@@ -205,7 +206,7 @@ function createApp(
         contributors: [{
           "name": userSettings.author,
         }],
-        description: `bedrock node-base-${templateName}`,
+        description: `bedrock node-base-${template}`,
         version
       }
       fs.writeFileSync(packageJsonPath, JSON.stringify(content, null, 2));

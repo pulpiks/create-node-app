@@ -19,8 +19,8 @@ module.exports = [{
 }, {
     "type": "input",
     "name": "language",
-    choices: ['Javascript', 'Typescript'],
-    "message": "Choose language: Javascript/Typescript",
+    choices: ['javascript', 'typescript'],
+    "message": "Choose language: javascript/typescript",
     validate: confirmAnswerValidator({required: true})
 }, {
     "type": "input",
