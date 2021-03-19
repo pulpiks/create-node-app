@@ -25,7 +25,7 @@ Create a project, and you’re good to go.
 
   
 
-2.  ```npm install```
+2.  ```cd create-node-app && npm install```
 
   
 
@@ -33,7 +33,7 @@ Create a project, and you’re good to go.
 
   
 
-3. Run the command: ```create-node-base <%=RELATIVE_PATH_TO_YOUR_NEW_PROJECT=%>```
+3. Run the command: ```npm link && create-node-base <%=RELATIVE_PATH_TO_YOUR_NEW_PROJECT=%>```
 
   
 
